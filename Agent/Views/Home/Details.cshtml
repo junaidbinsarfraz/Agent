@@ -1,0 +1,53 @@
+﻿@model Agent.agent
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="white-box">
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <div class="white-box">
+                <div class=""> <img alt="photo" src="@Url.Content(@Model.photo)" width="100%" > </div>
+                <div class=""> <img alt="thumbnail" src="@Url.Content(@Model.thumbnail)" width="125" height="250" style="margin: auto; border: 2px solid red;" class="center-block p-10 m-t-10"> </div>
+                
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="white-box">
+                <div class="user-btm-box">
+                    <!-- .row -->
+                    <div class="row text-center m-t-10">
+                        <div class="col-md-6 b-r">
+                            <strong>First Name</strong>
+                            <p>@Model.firstname</p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Last Name</strong>
+                            <p>@Model.lastname</p>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <hr>
+                    <!-- .row -->
+                    <div class="row text-center m-t-10">
+                        <div class="col-md-6 b-r">
+                            <strong>Email</strong>
+                            <p>@Model.email</p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Phone</strong>
+                            <p>@Model.phone</p>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { email = Model.email }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

@@ -1,0 +1,38 @@
+﻿@model Agent.agent
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="white-box">
+    <div class="row">
+        <div class="col-sm-12 col-xs-12">
+            @using (Html.BeginForm("Edit", "Home", FormMethod.Post,
+                             new { enctype = "multipart/form-data", data_toggle = "validator" }))
+            {
+                @Html.ValidationMessage("general", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class="control-label">First Name</label>
+                    @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="control-label">Last Name</label>
+                    @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group hide">
+                    <label for="exampleInputPassword1" class="control-label">Email</label>
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "password" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="control-label">Phone</label>
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                </div>
+                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Edit</button>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success waves-effect waves-light m-r-10" })
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Agent.agent>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="white-box">
+    <div style="margin-bottom: 15px;">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success waves-effect waves-light m-r-10" })
+    </div>
+
+    <div class="table-responsive">
+        <table id="myTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th class="no-sort">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.firstname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.lastname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.phone)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { email = item.email }) |
+                            @Html.ActionLink("Details", "Details", new { email = item.email }) |
+                            @Html.ActionLink("Delete", "Delete", new { email = item.email })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+    $('#myTable').DataTable({dom: 'Bfrtip',
+        buttons: [
+            'excel', 'pdf', 'print'
+        ]});
+    });
+
+</script>
+<!--Style Switcher -->
+<script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
